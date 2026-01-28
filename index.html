@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คืนดีกันนะ... ♥</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600;700&family=Anuphan:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(45deg, #ffd6e7, #ffebf3, #fff9fc);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Anuphan', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.15);
+            overflow: hidden;
+            border: 3px solid #ffafcc;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            background: linear-gradient(to right, #ffafcc, #ff8fab);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "♥ ♥ ♥";
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            font-size: 1.5rem;
+            opacity: 0.3;
+            letter-spacing: 15px;
+        }
+        
+        .title {
+            font-family: 'Mali', cursive;
+            font-size: 2.8rem;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .heart {
+            color: #ff477e;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .content {
+            padding: 35px;
+        }
+        
+        .chat-bubble {
+            background-color: #fff0f6;
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 25px;
+            position: relative;
+            border: 2px dashed #ffafcc;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            from { box-shadow: 0 0 0px rgba(255, 175, 204, 0.5); }
+            to { box-shadow: 0 0 20px rgba(255, 175, 204, 0.8); }
+        }
+        
+        .chat-bubble::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 40px;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 15px solid #fff0f6;
+        }
+        
+        .chat-bubble::after {
+            content: "";
+            position: absolute;
+            top: -13px;
+            left: 42px;
+            border-left: 13px solid transparent;
+            border-right: 13px solid transparent;
+            border-bottom: 13px solid #ffafcc;
+            z-index: -1;
+        }
+        
+        .message {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #555;
+            text-align: center;
+        }
+        
+        .message i {
+            color: #ff477e;
+            margin: 0 8px;
+        }
+        
+        .cute-animals {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .animal {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .animal:hover {
+            transform: scale(1.1);
+        }
+        
+        .animal-icon {
+            font-size: 3.5rem;
+            color: #ff8fab;
+            margin-bottom: 10px;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.1));
+        }
+        
+        .animal-text {
+            background-color: #ffebf3;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            color: #ff477e;
+            font-size: 1.1rem;
+        }
+        
+        .make-up-section {
+            text-align: center;
+            margin: 40px 0 30px;
+        }
+        
+        .make-up-btn {
+            background: linear-gradient(to right, #ff8fab, #ffafcc);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.4rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Mali', cursive;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 143, 171, 0.4);
+        }
+        
+        .make-up-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 143, 171, 0.6);
+            background: linear-gradient(to right, #ff7ba3, #ff9ebf);
+        }
+        
+        .make-up-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        .hidden-surprise {
+            background-color: #fff9fb;
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 25px;
+            display: none;
+            border: 3px solid #ffafcc;
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+        
+        .hidden-surprise h3 {
+            color: #ff477e;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            font-family: 'Mali', cursive;
+        }
+        
+        .promise-list {
+            list-style-type: none;
+            margin: 20px 0;
+            text-align: left;
+            display: inline-block;
+        }
+        
+        .promise-list li {
+            padding: 12px 0 12px 45px;
+            position: relative;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .promise-list li:before {
+            content: "🐻";
+            position: absolute;
+            left: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .gif-container {
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid #ffafcc;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .gif-placeholder {
+            background: linear-gradient(to right, #ffd6e7, #ffebf3);
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ff477e;
+            font-size: 1.2rem;
+        }
+        
+        .footer {
+            background-color: #fff0f6;
+            padding: 20px;
+            text-align: center;
+            color: #ff8fab;
+            border-top: 2px dashed #ffafcc;
+            font-size: 1rem;
+        }
+        
+        .signature {
+            font-family: 'Mali', cursive;
+            font-size: 1.8rem;
+            color: #ff477e;
+            margin-top: 8px;
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ffafcc;
+            opacity: 0.7;
+            animation: floatAround 15s linear infinite;
+        }
+        
+        @keyframes floatAround {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(100px, -100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+            }
+            
+            .cute-animals {
+                gap: 20px;
+            }
+            
+            .animal-icon {
+                font-size: 2.8rem;
+            }
+            
+            .make-up-btn {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.9rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .chat-bubble {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- หัวใจลอยๆ -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">คืนดีกันนะ <span class="heart">♥</span></h1>
+            <p class="subtitle">อย่าให้ความไม่เข้าใจมาทำให้เราไกลกันเลย...</p>
+        </div>
+        
+        <div class="content">
+            <div class="chat-bubble">
+                <div class="message">
+                    <i class="fas fa-heart"></i> 
+                    เราขอโทษจริงๆ นะ... ดีกันเถอะนะ 
+                    <i class="fas fa-heart"></i><br>
+                    อย่าโกรธกันเลย รักกันเหมือนเดิมดีกว่า!
+                </div>
+            </div>
+            
+            <div class="cute-animals">
+                <div class="animal" onclick="showMessage('bear')">
+                    <div class="animal-icon">🐻</div>
+                    <div class="animal-text">หมีขอคืนดี!</div>
+                </div>
+                <div class="animal" onclick="showMessage('rabbit')">
+                    <div class="animal-icon">🐰</div>
+                    <div class="animal-text">กระต่ายวอนขอ!</div>
+                </div>
+                <div class="animal" onclick="showMessage('cat')">
+                    <div class="animal-icon">🐱</div>
+                    <div class="animal-text">แมวร้องงอน!</div>
+                </div>
+                <div class="animal" onclick="showMessage('panda')">
+                    <div class="animal-icon">🐼</div>
+                    <div class="animal-text">แพนด้าอ้อน!</div>
+                </div>
+            </div>
+            
+            <div class="make-up-section">
+                <button class="make-up-btn" id="makeUpBtn">
+                    <i class="fas fa-heartbeat"></i> 
+                    คลิกที่นี่ถ้าอยากคืนดี!
+                    <i class="fas fa-heartbeat"></i>
+                </button>
+                
+                <div class="hidden-surprise" id="hiddenSurprise">
+                    <h3>เย้! ดีกันแล้วนะ <span class="heart">♥</span></h3>
+                    
+                    <div class="gif-container">
+                        <div class="gif-placeholder">
+                            🎉 ดีกันแล้ววว! 🎉<br>
+                            ยิ้มสิคะ/ครับ!
+                        </div>
+                    </div>
+                    
+                    <p style="margin: 20px 0; font-size: 1.2rem;">
+                        ต่อไปนี้เราจะ...
+                    </p>
+                    
+                    <ul class="promise-list">
+                        <li>ไม่เก็บความในใจไว้คนเดียว</li>
+                        <li>พูดกันดีๆ ด้วยความเข้าใจ</li>
+                        <li>ให้อภัยกันและกัน</li>
+                        <li>รักกันมากขึ้นกว่าเดิม</li>
+                        <li>เป็นคู่รักที่ดีต่อกัน</li>
+                    </ul>
+                    
+                    <p style="margin-top: 20px; font-size: 1.2rem; color: #ff477e;">
+                        ไว้เจอกันนะ! ฉันรอนะ... 🥰
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>สร้างด้วยความรักและหวังดี</p>
+            <div class="signature">ขอโทษและอยากคืนดีจริงๆ นะ</div>
+        </div>
+    </div>
+
+    <script>
+        // สร้างหัวใจลอย
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '♥';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 15 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.color = Math.random() > 0.5 ? '#ffafcc' : '#ff8fab';
+                container.appendChild(heart);
+            }
+        }
+        
+        // สัตว์น่ารักๆ พูด
+        function showMessage(animal) {
+            const messages = {
+                bear: "กรุรุร... อย่าโกรธกันเลย นะฮะ! 🐻",
+                rabbit: "วอนขอให้ดีกันนะค่าา! 🐰",
+                cat: "มี๊ยาม~ ให้อภัยเถอะน้า 🐱",
+                panda: "ชะชะ... ดีกันดีกว่า! 🐼"
+            };
+            
+            // อัพเดทข้อความในฟองคำพูด
+            document.querySelector('.message').innerHTML = `
+                <i class="fas fa-heart"></i> 
+                ${messages[animal]} 
+                <i class="fas fa-heart"></i><br>
+                เราเป็นคู่รักกันนะ ผ่านเรื่องนี้ไปด้วยกันเถอะ!
+            `;
+            
+            // เพิ่มอนิเมชัน
+            const chatBubble = document.querySelector('.chat-bubble');
+            chatBubble.style.animation = 'none';
+            setTimeout(() => {
+                chatBubble.style.animation = 'pulse 2s infinite alternate';
+            }, 10);
+        }
+        
+        // ปุ่มคืนดี
+        document.getElementById('makeUpBtn').addEventListener('click', function() {
+            const surprise = document.getElementById('hiddenSurprise');
+            
+            // ซ่อนปุ่ม
+            this.style.display = 'none';
+            
+            // แสดงเซอร์ไพรส์
+            surprise.style.display = 'block';
+            
+            // เปลี่ยนหัวข้อ
+            document.querySelector('.title').innerHTML = 'ดีกันแล้ววว! <span class="heart">♥</span>';
+            document.querySelector('.subtitle').textContent = 'รักกันมากๆ นะ คู่รักของฉัน...';
+            
+            // เปลี่ยนสี header
+            document.querySelector('.header').style.background = 'linear-gradient(to right, #a7e9af, #86d186)';
+            
+            // เพิ่มหัวใจลอยเยอะๆ
+            for(let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createHeartExplosion();
+                }, i * 100);
+            }
+            
+            // เพิ่มข้อความสุดท้าย
+            setTimeout(() => {
+                const finalMessage = document.createElement('div');
+                finalMessage.className = 'chat-bubble';
+                finalMessage.style.marginTop = '20px';
+                finalMessage.style.animation = 'fadeIn 1s';
+                finalMessage.innerHTML = `
+                    <div class="message">
+                        <i class="fas fa-star"></i> 
+                        ขอบคุณที่ให้อภัยฉันนะ... ฉันจะทำให้เธอ/คุณเห็นว่า 
+                        เราคู่กันดีที่สุดแล้ว! 
+                        <i class="fas fa-star"></i>
+                    </div>
+                `;
+                document.querySelector('.make-up-section').appendChild(finalMessage);
+            }, 1500);
+        });
+        
+        // หัวใจระเบิด
+        function createHeartExplosion() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '♥';
+            heart.style.position = 'fixed';
+            heart.style.fontSize = (Math.random() * 25 + 15) + 'px';
+            heart.style.color = Math.random() > 0.5 ? '#ff477e' : '#ff8fab';
+            heart.style.left = Math.random() * 90 + 5 + 'vw';
+            heart.style.top = '80vh';
+            heart.style.zIndex = '1000';
+            heart.style.pointerEvents = 'none';
+            heart.style.opacity = '0.9';
+            
+            // สร้าง keyframes ไดนามิก
+            const keyframes = `
+                @keyframes heartExplode {
+                    0% { 
+                        transform: translateY(0) scale(1) rotate(0deg); 
+                        opacity: 0.9; 
+                    }
+                    100% { 
+                        transform: translateY(-100vh) scale(0.5) rotate(360deg); 
+                        opacity: 0; 
+                    }
+                }
+            `;
+            
+            // เพิ่ม style ถ้ายังไม่มี
+            if (!document.getElementById('explodeStyle')) {
+                const style = document.createElement('style');
+                style.id = 'explodeStyle';
+                style.innerHTML = keyframes;
+                document.head.appendChild(style);
+            }
+            
+            heart.style.animation = `heartExplode ${Math.random() * 2 + 1.5}s ease-out forwards`;
+            document.body.appendChild(heart);
+            
+            // ลบหัวใจหลังจากอนิเมชันเสร็จ
+            setTimeout(() => {
+                if (heart.parentNode) heart.parentNode.removeChild(heart);
+            }, 2000);
+        }
+        
+        // เริ่มต้นสร้างหัวใจลอย
+        createFloatingHearts();
+        
+        // เพิ่มคำพูดน่ารักๆ สลับกัน
+        const cuteMessages = [
+            "รักกันนะ... อย่าให้ใครมาทำให้เราไกลกันเลย",
+            "เราผ่านมากมายด้วยกัน เรื่องนี้ก็ผ่านไปได้เหมือนกัน",
+            "ทุกคู่รักมีปัญหาบ้าง แต่เราผ่านมันไปด้วยกันเสมอ",
+            "คำว่า 'ขอโทษ' อาจไม่พอ... แต่ใจฉันจริงๆ นะ"
+        ];
+        
+        let messageIndex = 0;
+        setInterval(() => {
+            const messageElement = document.querySelector('.message');
+            messageElement.innerHTML = `
+                <i class="fas fa-heart"></i> 
+                ${cuteMessages[messageIndex]} 
+                <i class="fas fa-heart"></i><br>
+                ดีกันเถอะนะ... ฉันขอร้องจริงๆ!
+            `;
+            messageIndex = (messageIndex + 1) % cuteMessages.length;
+        }, 5000);
+    </script>
+</body>
+</html>
